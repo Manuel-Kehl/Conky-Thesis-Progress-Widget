@@ -1,0 +1,42 @@
+conky.config = {
+	background=false,
+	update_interval=1,
+
+	cpu_avg_samples=2,
+	net_avg_samples=2,
+
+	override_utf8_locale=true,
+
+	double_buffer=true,
+	no_buffers=true,
+	short_units=true,
+
+	text_buffer_size=2048,
+	imlib_cache_size=0,
+
+	own_window=true,
+	own_window_type="dock",
+	own_window_hints="undecorated,sticky,skip_taskbar,skip_pager,below",
+	own_window_transparent=true,
+	own_window_argb_visual=true,
+	default_color="#abc",
+
+	draw_shades=false,
+	draw_outline=false,
+	draw_borders=false,
+	draw_graph_borders=false,
+
+	alignment="top_left",
+	gap_x=250,
+	gap_y=335,
+
+	use_xft=true,
+	override_utf8_locale=true,
+}
+
+conky.text = [[
+${offset 173}${font FontAwesome:size=25}${font}
+${offset 30}${voffset -7}${font Purisa:size=25:italic} Thesis Progress
+${voffset -10}${font FontAwesome:size=14}${font}   ${font Comfortaa:size=14}${exec pdfWordCount 0 10 ~/Documents/Master/Dissertation/Thesis/main.pdf} words written${font}       ${font FontAwesome:size=14}${font}  ${font Comfortaa:size=14}${exec daysLeft 1471651140} days left
+	
+]]

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+deadline=$1
+current_time=$(date +%s)
+
+echo "($deadline - $current_time) / 86400" | bc

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Pages to skip in the beginning and end of the PDF document
+skip_start=$1
+skip_end=$2
+
+pages=$(exiftool "$3" | grep 'Page Count' | cut -c35-)
+first=$((skip_start+1))
+last=$((pages-skip_end))
+
+
+# Adapt the "sed" commands to your personal needs and liking
+
+# The commented-out line filters out all words that are in brackets or contain a number
+#pdftotext -nopgbrk -f $first -l $last "$3" - | sed 's/\[.*\]//g' | sed 's/[[:digit:]\.]*//g' | wc -w
+
+# This filters out my personal "note syntax, e.g. [ TODO: ... ]"
+pdftotext -nopgbrk -f $first -l $last "$3" - | sed 's/\[.*DONE.*\]//g' | sed 's/\[.*QUESTION.*\]//g' | sed 's/\[.*TODO.*\]//g' | wc -w
